@@ -11,7 +11,7 @@
 - [ ] User can create new trivia cards.
 - [ ] Each flash card has a "front" and "back" so user can test their knowledge.
 - [ ] User is scored with number of Eggos, and users can see this score at the end.
-- [ ] ES6 Compiled through Babel. 
+- [ ] Code is transpiled.  
 - [ ] Use of postgreSQL. 
 - [ ] Must include TDD.
 - [ ] Publish to Heroku.
