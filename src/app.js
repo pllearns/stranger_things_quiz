@@ -12,6 +12,7 @@ import database from './database'
 import passport from './auth/passport'
 import index from './routes/index'
 import users from './routes/users'
+import quiz from './routes/quiz'
 
 const app = express()
 
@@ -37,6 +38,7 @@ app.use(morgan('common'))
 
 app.use('/', index)
 app.use('/users', users)
+app.use('/quiz', quiz)
 
 app.listen(app.get('port'), () => {
   console.log('Example app listening on port 3000!');
