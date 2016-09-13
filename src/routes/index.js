@@ -1,8 +1,8 @@
-var express = require('express')
-var router = express.Router()
+import express from 'express'
+const router = express.Router()
 
-router.get('/', (req, res, next) => {
-  res.render('home')
+router.get('/', (request, response, next) => {
+  response.render('home')
 })
 
 module.exports = router
