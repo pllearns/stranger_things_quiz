@@ -10,25 +10,30 @@ const REDIRECTS = {
   successRedirect: '/',
   failureRedirect: '/users/login'
 }
+const FAILURE_MESSAGE = { message: 'Incorrect email or password.' }
+
+const checkPassword = (done, password, user) => hash => {
+  bcrypt.compare( password, hash, (error, result) => {
+    if( result ) {
+      return done( null, user )
+    } else {
+      return done( null, false, FAILURE_MESSAGE )
+    }
+  })
+}
+
+const checkUser = (done, password) => user => {
+  if( user.length === 0 ) {
+    return done( null, false, FAILURE_MESSAGE )
+  } else {
+    hashPassword( password )
+      .then( checkPassword( done, password, user) )
+  }
+}
 
 const strategy = new Strategy( AUTH_FIELDS, (email, password, done) => {
   User.findByEmail( email )
-    .then( user => {
-      if( user.length === 0 ) {
-        return done( null, false, { message: 'Incorrect email or password.' })
-      } else {
-        hashPassword( password )
-          .then( hash => {
-            bcrypt.compare( password, hash, (error, result) => {
-              if( result ) {
-                return done( null, user )
-              } else {
-                return done( null, false, { message: 'Incorrect email or password.' })
-              }
-            })
-          })
-      }
-    })
+    .then( checkUser( done, password ) )
     .catch( error => done( error ))
   }
 )
