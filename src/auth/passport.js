@@ -12,32 +12,6 @@ const REDIRECTS = {
 }
 const FAILURE_MESSAGE = { message: 'Incorrect email or password.' }
 
-const checkPassword = (done, password, user) => hash => {
-  bcrypt.compare( password, hash, (error, result) => {
-    if( result ) {
-      return done( null, user )
-    } else {
-      return done( null, false, FAILURE_MESSAGE )
-    }
-  })
-}
-
-const checkUser = (done, password) => user => {
-  if( user.length === 0 ) {
-    return done( null, false, FAILURE_MESSAGE )
-  } else {
-    hashPassword( password )
-      .then( checkPassword( done, password, user) )
-  }
-}
-
-const strategy = new Strategy( AUTH_FIELDS, (email, password, done) => {
-  User.findByEmail( email )
-    .then( checkUser( done, password ) )
-    .catch( error => done( error ))
-  }
-)
-
 const hashPassword = password => {
   return new Promise( (resolve, reject) => {
     bcrypt.hash( password, SALT_ROUNDS, (error, hash) => {
@@ -49,6 +23,34 @@ const hashPassword = password => {
     })
   })
 }
+
+const checkUser = (done, password) => user => {
+  if( user.length === 0 ) {
+    return done( null, false, FAILURE_MESSAGE )
+  } else {
+    hashPassword( password )
+    .then( checkPassword( done, password, user) )
+  }
+}
+
+const checkPassword = (done, password, user) => hash => {
+  bcrypt.compare( password, hash, (error, result) => {
+    if( result ) {
+      return done( null, user )
+    } else {
+      return done( null, false, FAILURE_MESSAGE )
+    }
+  })
+}
+
+
+
+const strategy = new Strategy( AUTH_FIELDS, (email, password, done) => {
+  User.findByEmail( email )
+    .then( checkUser( done, password ) )
+    .catch( error => done( error ))
+  }
+)
 
 passport.use( strategy )
 
