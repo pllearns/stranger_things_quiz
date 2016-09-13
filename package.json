@@ -7,7 +7,6 @@
     "test": "jasmine",
     "build:backend": "babel --watch src --out-dir dist --copy-files",
     "build:frontend": "webpack --watch",
-    "build:watch": "npm run build:backend; npm run build:frontend",
     "start:dev": "nodemon dist/app.js",
     "start": "node dist/app.js"
   },
@@ -37,6 +36,7 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
@@ -49,6 +49,7 @@
     "gravatar": "^1.5.2",
     "hbs": "~4.0.0",
     "lodash": "^4.15.0",
+    "morgan": "^1.7.0",
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

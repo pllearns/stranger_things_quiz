@@ -1,0 +1,10 @@
+{{#if message}}
+  {message}
+{{/if}}
+
+<form action="/users/signup" method="post">
+  <input type="text" name="name" />
+  <input type="text" name="email" />
+  <input type="password" name="password" />
+  <button type="submit">Sign Up</button>
+</form>
