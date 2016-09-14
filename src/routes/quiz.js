@@ -10,8 +10,8 @@ router.get('/:quiz_id', (request, response, next) => {
   .catch( error => response.send({ error, message: error.message }))
 })
 
-// router.post('/:quiz_id', (request, response, next) => {
-//   Quiz.getQuizSession
-// })
+router.post('/:quiz_id', (request, response, next) => {
+  Quiz.getQuizSession
+})
 
 module.exports = router
