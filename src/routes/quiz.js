@@ -4,14 +4,19 @@ const router = express.Router()
 import { Quiz } from '../database'
 
 router.get( '/start', (request, response) => {
-  let user_id = request.user.id
+  let user_id = request.user[0].id
 
-  if( ! request.isAuthenticated() ) {
-    // TODO: Setup anonymous user
-  } 
+  console.log('')
+
+  // if( ! request.isAuthenticated() ) {
+  //   // TODO: Setup anonymous user
+  // } 
 
   Quiz.createSession( user_id )
-    .then( quiz_id => response.redirect( `/quiz/${quiz_id}/0` ))
+    .then( quiz_id => {
+      console.log("yay quiz id??", quiz_id)
+      response.redirect( `/quiz/${quiz_id}/0` )
+    })
     .catch( error => response.send({ message: error.message }))
 })
 

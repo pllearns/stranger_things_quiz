@@ -20,7 +20,7 @@ CREATE TABLE quiz_sessions
 (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
-  started_at TIMESTAMP
+  started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE quiz_session_questions
