@@ -1,17 +1,40 @@
 import express from 'express'
 const router = express.Router()
+
 import { Quiz } from '../database'
 
-router.get('/:quiz_id', (request, response, next) => {
-  Quiz.getAllQuestions(request.params.quiz_id)
-  .then(result => Quiz.getAllAnswers(result[0].question_id))
-  // .then(result => response.json(result.question_id))
-  .then(result => response.json(result))
-  .catch( error => response.send({ error, message: error.message }))
+router.get( '/start', (request, response) => {
+  let user_id = request.user.id
+
+  if( ! request.isAuthenticated() ) {
+    // TODO: Setup anonymous user
+  } 
+
+  Quiz.createSession( user_id )
+    .then( quiz_id => response.redirect( `/quiz/${quiz_id}/0` ))
+    .catch( error => response.send({ message: error.message }))
 })
 
-router.post('/:quiz_id', (request, response, next) => {
-  Quiz.getQuizSession
+router.get( '/quiz/:id/results', (request, response) => {
+  const { id } = request.params
+
+  Quiz.calculateResults( id )
+    .then( results => response.render( 'quiz/results', { results }))
+    .catch( error => response.send({ message: error.message }))
+})
+
+router.get( '/quiz/:id/:questionNumber', (request, response) => {
+  const { id, questionNumber } = request.params
+
+  // TODO: Update quiz_session_questions, setting correct and completed
+  // Determine value for correct
+  // Update question
+
+  // TODO: Get count of questions, and redirect to /quiz/results if at end
+
+  Quiz.getQuestion( id, questionNumber )
+    .then( question => response.render( 'quizzes/question', { question }))
+    .catch( error => response.send({ message: error.message }))
 })
 
 module.exports = router
