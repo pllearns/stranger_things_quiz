@@ -8,7 +8,8 @@
     "build:backend": "babel --watch src --out-dir dist --copy-files",
     "build:frontend": "webpack --watch",
     "start:dev": "nodemon dist/app.js",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "db": "dropdb stranger_quiz; createdb stranger_quiz; psql stranger_quiz < schema.sql"
   },
   "repository": {
     "type": "git",

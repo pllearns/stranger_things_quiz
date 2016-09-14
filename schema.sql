@@ -20,7 +20,7 @@ CREATE TABLE quiz_sessions
 (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
-  started_at TIMESTAMP,
+  started_at TIMESTAMP
 );
 
 CREATE TABLE quiz_session_questions
@@ -28,7 +28,8 @@ CREATE TABLE quiz_session_questions
   id SERIAL PRIMARY KEY,
   quiz_session_id INTEGER NOT NULL,
   question_id INTEGER NOT NULL,
-  total_correct INTEGER NOT NULL 
+  correct BOOLEAN DEFAULT false,
+  completed BOOLEAN DEFAULT false
 );
 
 CREATE TABLE questions
