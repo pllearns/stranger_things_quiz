@@ -18,37 +18,48 @@ const User = {
   create: (name, email, password) => db.one( createUser, [ name, email, password ])
 }
 
-const createSession = 'INSERT INTO quiz_sessions( user_id ) VALUES ( $1 ) RETURNING quiz_sessions.id'
+const createSession = 'INSERT INTO quiz_sessions( user_id ) VALUES ( $1 )'
 const getQuizSession = 'SELECT * FROM quiz_sessions WHERE id=$1'
-const getQuestion = 'SELECT * FROM questions WHERE id IN ($1:csv)'
-const getAllQuestions = 'SELECT * FROM questions'
-const getAnswers = 'SELECT * FROM answers WHERE question_id IN ($1:csv)'
+const getQuestion = 'SELECT * FROM quiz_session_questions WHERE quiz_session_id=$1 AND question_id=$2'
+const getAllQuestions = 'SELECT * FROM questions WHERE id=$1'
+const getAnswers = 'SELECT * FROM answers WHERE question_id=$1'
+// const allQuestionsInSession = `SELECT 
+//       questions.*,
+//       quiz_session_questions.question_id
+//     FROM 
+//       questions
+//     LEFT JOIN 
+//       quiz_session_questions
+//     ON 
+//       questions.id=quiz_session_questions.question_id
+//     WHERE
+//       quiz_session_questions.quiz_id IN ($1:csv)`
+
+
+// getSessionQuestions: copies all existing question id's and correct status 
+// getQuestionText: get question text for x question id
+// getOneQuestionAnswers: get all answers for x question id
+// wrap all this shit up in a parcel and hand it to the front
+
 
 const Quiz = {
   createSession: (user_id) => db.one( createSession, [ user_id ]),
   getQuizSession: id => db.one( getQuizSession, [ id ]),
   getAllQuestions: question_id => db.any( getAllQuestions, [ question_id ]),
   getQuestion: quiz_session_id => db.any( getQuestion, [ quiz_session_id ]),
-  getAnswers: question_id => db.any(getAnswers, [ question_id]),
+  getAnswers: question_id => db.any(getAllAnswers, [ question_id]),
 }
 
-// refactor so that one question and answer set is retrieved at a time
-// refactor so that quiz_session_questions is used and we can have multiple quizzes/adding questions)
-
-const getAllQuestionsByQuizSession = () => {
-  return Quiz.getAllQuestions().then( questions => {
+const getAllQuestionsByQuizSession
+  return getAllQuestions().then(questions => {
     const questionIds = questions.map(question => question.id)
 
     return Promise.all([
-      Quiz.getAnswers(questionIds),
-      Quiz.getQuestion(questionIds),
+      getAnswers(questionIds),
+      getQuestion(questionIds),
     ]).then(data => {
-      console.log(questions)
-      const answers = data[0]
-      const question = data[1]
-      return data
+      console.log(data)
     })
+    return questions
   })
-}
-
-export { User, Quiz , getAllQuestionsByQuizSession }
+export { User, Quiz }
