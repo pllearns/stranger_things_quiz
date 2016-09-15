@@ -43,9 +43,9 @@ const getAllQuestionsByQuizSession = () => {
       Quiz.getAnswers(questionIds),
       Quiz.getQuestion(questionIds),
     ]).then(data => {
-      console.log(questions)
       const answers = data[0]
       const question = data[1]
+      const questionAnswers = answers.map(answer => answer)
       return data
     })
   })

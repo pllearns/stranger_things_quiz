@@ -36,13 +36,13 @@ router.get( '/:id/:questionNumber', (request, response) => {
   // TODO: Get count of questions, and redirect to /quiz/results if at end
 
   getAllQuestionsByQuizSession()
-    .then( data => response.render( 'quizzes/question', { answers: data[0], questions: data[1] }))
+    .then( data => response.render( 'quizzes/question', { data:data }))
     .catch( error => response.send({ message: error.message }))
 })
 
 router.get('/json', (request, response) => {
   getAllQuestionsByQuizSession()
-  .then(data => response.json(data))
+  .then(data => response.json(data[0]))
 })
 
 
