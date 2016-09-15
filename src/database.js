@@ -44,24 +44,40 @@ const getAllQuestionsByQuizSession = () => {
       Quiz.getQuestion(questionIds),
     ]).then(data => {
       const answers = data[0]
-      const question = data[1]
-      const questionAnswers = answers.map(answer => answer)
-      return data
+      const questions = data[1]
+
+      console.log( 'The answers from query', answers )
+
+      let questionAnswers = questions.map( question => {
+          answers.map( answer => {
+
+              let questionAnswer = answer.id
+              console.log(questionAnswer);
+
+              if( answer.question_id === question.id ) {
+                question.answers = [...questionAnswer]
+              }
+          })
+      })
+
+      // const individualQuizQuestAndAns = []
+      // const questionAnswers = questions.map(question => {
+      //   const q_id = question.id
+      //   individualQuizQuestAndAns.push( question )
+      //   for each (q_id){
+      //     answers.map(answer => {
+      //       if (answer.question_id === q_id) {
+      //       individualQuizQuestAndAns.push(answer.question_id)
+      //       }
+      //     })
+      //   }
+      // })
+      console.log( 'questionAnswers', questionAnswers )
+
+      return questionAnswers
+      // return db.One(question, answer)
     })
   })
 }
 
-const getOneQuestionAndAnswer = (data, questionNumber) => {
-    const oneQuestion = data[1].map(question => question.question_text)
-    console.log(oneQuestion)
-
-    // ]).then(data => {
-    //   const answers = data[0]
-    //   const question = data[1]
-    //   const questionAnswers = answers.map(answer => answer)
-    //   return data
-    // })
-  })
-}
-
-export { User, Quiz , getAllQuestionsByQuizSession, getOneQuestionAndAnswer }
+export { User, Quiz , getAllQuestionsByQuizSession }
