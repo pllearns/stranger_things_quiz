@@ -1,13 +1,14 @@
-<p>SO MANY QUESTIONS</p>
+<p>YOUR STRANGER QUIZ</p>
+
 <div>
-<ul id="answers">
-{{#each data.[1]}}
-  <li>{{@key}}: {{question_text}}</li>
-  
+<ul id="getAllQuestionsByQuizSession">
+{{#each data.[0]}}
+  <li>{{question_text}} <a href="{{img_url}}"></a></li>
 {{/each}}
 
-{{#each data.[0]}}
-  <li>{{@key}}: {{answer_text}}</li>
+{{#each data.[1]}}
+  <li>{{answer_text}}</li>
 {{/each}}
+
 </ul>
 </div>

@@ -25,6 +25,7 @@ const getAllQuestions = 'SELECT * FROM questions'
 const getAllAnswers = 'SELECT * FROM answers WHERE question_id IN ($1:csv)'
 const getOneQuestAnswer = 'SELECT * FROM answers WHERE question_id=$1'
 
+
 const Quiz = {
   createSession: (user_id) => db.one( createSession, [ user_id ]),
   getQuizSession: id => db.one( getQuizSession, [ id ]),
@@ -37,35 +38,71 @@ const Quiz = {
 // refactor so that one question and answer set is retrieved at a time
 // refactor so that quiz_session_questions is used and we can have multiple quizzes/adding questions)
 
+const getAnswersByQuestionID = questionID => {
+  return Quiz.getOneQuestAnswer(questionID)
+}
+
+
 const getAllQuestionsByQuizSession = () => {
   return Quiz.getAllQuestions().then( questions => {
     const questionIds = questions.map(question => question.id)
-
     return Promise.all([
       Quiz.getQuestion(questionIds),
       Quiz.getAllAnswers(questionIds)
     ]).then(data => {
       const questions = data[0]
       const answers = data[1]
-      // console.log(data)
-
       let questionAnswers = questions.map( question => {
-        let questionId = question.id
-        let allAnswers = Quiz.getOneQuestAnswer(questionId)
-        console.log(allAnswers)
-        answers.map( answer => {
-          let questionAnswer = answer.id
-            if( answer.question_id === question.id ) {
-              question.answers = [...questionAnswer]
-            }
-        })
+        const things = getAnswersByQuestionID(question.id)
+        console.log(things)
+        // .then(getAnswerSet => {
+        //   answers.map( answer => {
+        //     let questionAnswer = answer.id
+        //     if( answer.question_id === question.id ) {
+        //       question.answers = [...questionAnswer]
+        //     }
+        //   })
+        // })
       })
-      return questionAnswers
     })
   })
 }
 
+
+
+
+
 export { User, Quiz , getAllQuestionsByQuizSession }
+
+// const getAllQuestionsByQuizSession = () => {
+//   return Quiz.getAllQuestions().then( questions => {
+//     const questionIds = questions.map(question => question.id)
+//
+//     return Promise.all([
+//       Quiz.getQuestion(questionIds),
+//       Quiz.getAllAnswers(questionIds)
+//     ]).then(data => {
+//       const questions = data[0]
+//       const answers = data[1]
+//       let questionAnswers = questions.map( question => {
+//         let questionId = question.id
+//         let allAnswers = Quiz.getOneQuestAnswer(questionId)
+//         .then(getAnswerSet => {
+//           answers.map( answer => {
+//             let questionAnswer = answer.id
+//             if( answer.question_id === question.id ) {
+//               question.answers = [...questionAnswer]
+//             }
+//           })
+//         })
+//       })
+//       console.log(data);
+//       return data
+//     })
+//   })
+// }
+
+
 
 
 // const individualQuizQuestAndAns = []
