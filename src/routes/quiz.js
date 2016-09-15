@@ -27,7 +27,6 @@ router.get( '/:id/results', (request, response) => {
 
 router.get( '/:id/:questionNumber', (request, response) => {
   const { id, questionNumber } = request.params
-  // console.log('blerg ------>', request.params )
 
   // TODO: Update quiz_session_questions, setting correct and completed
   // Determine value for correct
