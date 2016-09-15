@@ -1,14 +1,14 @@
 import express from 'express'
 const router = express.Router()
 
-import { Quiz, getAllQuestionsByQuizSession } from '../database'
+import { Quiz, getAllQuestionsByQuizSession, getOneQuestionAndAnswer } from '../database'
 
 router.get( '/start', (request, response) => {
   let user_id = request.user[0].id
 
   if( ! request.isAuthenticated() ) {
     // TODO: Setup anonymous user
-  } 
+  }
 
   Quiz.createSession( user_id )
     .then( quiz_id => {
@@ -36,6 +36,7 @@ router.get( '/:id/:questionNumber', (request, response) => {
   // TODO: Get count of questions, and redirect to /quiz/results if at end
 
   getAllQuestionsByQuizSession()
+    .then( data => getOneQuestionAndAnswer(data, questionNumber))
     .then( data => response.render( 'quizzes/question', { data:data }))
     .catch( error => response.send({ message: error.message }))
 })

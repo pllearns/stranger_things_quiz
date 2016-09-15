@@ -51,4 +51,17 @@ const getAllQuestionsByQuizSession = () => {
   })
 }
 
-export { User, Quiz , getAllQuestionsByQuizSession }
+const getOneQuestionAndAnswer = (data, questionNumber) => {
+    const oneQuestion = data[1].map(question => question.question_text)
+    console.log(oneQuestion)
+
+    // ]).then(data => {
+    //   const answers = data[0]
+    //   const question = data[1]
+    //   const questionAnswers = answers.map(answer => answer)
+    //   return data
+    // })
+  })
+}
+
+export { User, Quiz , getAllQuestionsByQuizSession, getOneQuestionAndAnswer }
