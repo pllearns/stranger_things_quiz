@@ -50,58 +50,38 @@ const getAllQuestionsByQuizSession = () => {
       questions.forEach( question => {
         question.answers = answers.filter(answer => answer.question_id === question.id)
       })
-      console.log(questions[1].answers[0].answer_text);
       return questions
     })
   })
+}
+
+const getScore = () => {
+  console.log('this is the score?')
+    // for (let i = 0; i < answers.length; i++) {
+    //     let currentQuestion = ;
+    //     let questionAnswers = document.getElementsByName(currentQuestion);
+    //     for (let j = 0; j < questionResponses.length; j++) {
+    //         if (questionResponses[i].checked) {
+    //             userInput[i] = question0s[i].value;
+    //         }
+    //     }
+    // }
+    // let score = 0
+    // // after this completes, you'll have the user input values
+    // // the rest of your code should now work
+    // for (let i=0;i<numQuestions;i++){
+    //     if (userInput[i]==answers[i]){
+    //         score += 1;
+    //     } else {
+    //         score += 0;
+    //     }
+    // }
+    //
+    // return score;
 }
 
 
 
 
 
-export { User, Quiz , getAllQuestionsByQuizSession }
-
-// const getAllQuestionsByQuizSession = () => {
-//   return Quiz.getAllQuestions().then( questions => {
-//     const questionIds = questions.map(question => question.id)
-//
-//     return Promise.all([
-//       Quiz.getQuestion(questionIds),
-//       Quiz.getAllAnswers(questionIds)
-//     ]).then(data => {
-//       const questions = data[0]
-//       const answers = data[1]
-//       let questionAnswers = questions.map( question => {
-//         let questionId = question.id
-//         let allAnswers = Quiz.getOneQuestAnswer(questionId)
-//         .then(getAnswerSet => {
-//           answers.map( answer => {
-//             let questionAnswer = answer.id
-//             if( answer.question_id === question.id ) {
-//               question.answers = [...questionAnswer]
-//             }
-//           })
-//         })
-//       })
-//       console.log(data);
-//       return data
-//     })
-//   })
-// }
-
-
-
-
-// const individualQuizQuestAndAns = []
-// const questionAnswers = questions.map(question => {
-//   const q_id = question.id
-//   individualQuizQuestAndAns.push( question )
-//   for each (q_id){
-//     answers.map(answer => {
-//       if (answer.question_id === q_id) {
-//       individualQuizQuestAndAns.push(answer.question_id)
-//       }
-//     })
-//   }
-// })
+export { User, Quiz , getAllQuestionsByQuizSession, getScore }
