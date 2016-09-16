@@ -23,6 +23,7 @@ const getQuizSession = 'SELECT * FROM quiz_sessions WHERE id=$1'
 const getQuestion = 'SELECT * FROM questions WHERE id IN ($1:csv)'
 const getAllQuestions = 'SELECT * FROM questions'
 const getAllAnswers = 'SELECT answers.*, question_id FROM answers WHERE question_id IN ($1:csv)'
+const getCorrectAnswer = 'SELECT answers.*, question_id FROM answers WHERE question_id IN (1, 2, 3) AND correct=true'
 // const getOneQuestAnswer = 'SELECT * FROM answers WHERE question_id=$1'
 
 
@@ -32,7 +33,8 @@ const Quiz = {
   getAllQuestions: question_id => db.any( getAllQuestions, [ question_id ]),
   getQuestion: quiz_session_id => db.any( getQuestion, [ quiz_session_id ]),
   getAllAnswers: question_id => db.any(getAllAnswers, [ question_id]),
-  getOneQuestAnswer: question_id => db.any(getOneQuestAnswer, [ question_id ])
+  getOneQuestAnswer: question_id => db.any(getOneQuestAnswer, [ question_id ]),
+  getCorrectAnswers: question_id => db.any( getCorrectAnswer, [ question_id ] )
 }
 
 // refactor so that one question and answer set is retrieved at a time
@@ -84,6 +86,4 @@ const getScore = () => {
 
 
 
-
-
-export { User, Quiz , getAllQuestionsByQuizSession, getScore }
+export { User, Quiz , getAllQuestionsByQuizSession}
