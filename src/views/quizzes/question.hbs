@@ -2,12 +2,9 @@
 
 <div>
 <ul id="getAllQuestionsByQuizSession">
-{{#each data.[0]}}
-  <li>{{question_text}} <a href="{{img_url}}"></a></li>
-{{/each}}
-
-{{#each data.[1]}}
-  <li>{{answer_text}}</li>
+{{#each questions}}
+  <h3> {{question_text}} <img src="{{img_url}}"/> </h3>
+  <li>{{#each answers}} {{answer_text}} {{/each}}</li>
 {{/each}}
 
 </ul>

@@ -22,8 +22,8 @@ const createSession = 'INSERT INTO quiz_sessions( user_id ) VALUES ( $1 ) RETURN
 const getQuizSession = 'SELECT * FROM quiz_sessions WHERE id=$1'
 const getQuestion = 'SELECT * FROM questions WHERE id IN ($1:csv)'
 const getAllQuestions = 'SELECT * FROM questions'
-const getAllAnswers = 'SELECT * FROM answers WHERE question_id IN ($1:csv)'
-const getOneQuestAnswer = 'SELECT * FROM answers WHERE question_id=$1'
+const getAllAnswers = 'SELECT answers.*, question_id FROM answers WHERE question_id IN ($1:csv)'
+// const getOneQuestAnswer = 'SELECT * FROM answers WHERE question_id=$1'
 
 
 const Quiz = {
@@ -38,32 +38,24 @@ const Quiz = {
 // refactor so that one question and answer set is retrieved at a time
 // refactor so that quiz_session_questions is used and we can have multiple quizzes/adding questions)
 
-const getAnswersByQuestionID = questionID => {
-  return Quiz.getOneQuestAnswer(questionID)
+const getAnswersByQuestionID = (questionId) => {
+  return Quiz.getOneQuestAnswer(questionId)
 }
 
 
 const getAllQuestionsByQuizSession = () => {
   return Quiz.getAllQuestions().then( questions => {
     const questionIds = questions.map(question => question.id)
-    return Promise.all([
-      Quiz.getQuestion(questionIds),
-      Quiz.getAllAnswers(questionIds)
-    ]).then(data => {
-      const questions = data[0]
-      const answers = data[1]
-      let questionAnswers = questions.map( question => {
-        const things = getAnswersByQuestionID(question.id)
-        console.log(things)
-        // .then(getAnswerSet => {
-        //   answers.map( answer => {
-        //     let questionAnswer = answer.id
-        //     if( answer.question_id === question.id ) {
-        //       question.answers = [...questionAnswer]
-        //     }
-        //   })
-        // })
+    return Promise.all([ Quiz.getAllAnswers(questionIds )])
+    .then(data => {
+
+      const [ answers ] = data
+
+      questions.forEach( question => {
+        question.answers = answers.filter(answer => answer.question_id === question.id)
       })
+      console.log(questions[1].answers[0].answer_text);
+      return questions
     })
   })
 }
