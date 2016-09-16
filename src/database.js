@@ -57,10 +57,48 @@ const getAllQuestionsByQuizSession = () => {
   })
 }
 
-const getScore = () => {
-  console.log('this is the score?')
-  let score = 0
-  return score
+// const getScore = () => {
+//   console.log('this is the score?')
+//   let score = 0
+//   return score
+// }
+
+let sessionAnswers = new Array()
+// make this auto? add it in a function with looping and getting data from the database
+sessionAnswers["Eggos"] = 1
+sessionAnswers["Pancakes"] = 0
+sessionAnswers["The Upside Down"] = 1
+sessionAnswers["The Entryway"] = 0
+sessionAnswers["Hawkins, IN"] = 1
+sessionAnswers["Oakland, CA"] = 0
+
+// const getRightAnswer = () => {
+//   console.log('===================wat')
+//   let isItRight = 0
+//   let theForm = document.forms["quiz-form"]
+//   let selectedAnswer = theForm.elements["eggo1"] // does this need to change? do we need to do more to call this here???
+//   for(var i = 0; i < selectedAnswer.length; i++){
+//     if(selectedAnswer[i].checked){
+//       isItRight = sessionAnswers[selectedAnswer[i].value]
+//       break
+//     }
+//   }
+//   return isItRight
+// }
+
+// const getTotal = () => {
+//   let totalScore += getRightAnswer()
+//   console.log(totalScore)
+// }
+
+//looking to pull which thing was clicked from form
+//get data for what I"m looking for
+
+
+export { User, Quiz , getAllQuestionsByQuizSession}
+
+
+//some ideas for counting score
     // for (let i = 0; i < answers.length; i++) {
     //     let currentQuestion = ;
     //     let questionAnswers = document.getElementsByName(currentQuestion);
@@ -82,8 +120,3 @@ const getScore = () => {
     // }
     //
     // return score;
-}
-
-
-
-export { User, Quiz , getAllQuestionsByQuizSession}

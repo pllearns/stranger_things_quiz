@@ -17,11 +17,23 @@ router.get( '/start', (request, response) => {
     .catch( error => response.send({ message: error.message }))
 })
 
-router.get( '/:id/results', (request, response) => {
+router.post( '/:id/results', (request, response) => {
   const { id } = request.params
+  console.log(request.body)
   Quiz.getCorrectAnswers( id )
     .then( results => {
-      console.log('results', results)
+      // console.log('results', results)
+      response.redirect( 'quizzes/results', { results })
+    })
+    .catch( error => response.send({ message: error.message }))
+})
+
+router.get( '/:id/results', (request, response) => {
+  const { id } = request.params
+  console.log(request.body)
+  Quiz.getCorrectAnswers( id )
+    .then( results => {
+      // console.log('results', results)
       response.render( 'quizzes/results', { results })
     })
     .catch( error => response.send({ message: error.message }))

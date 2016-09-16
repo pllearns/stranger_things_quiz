@@ -4,8 +4,9 @@
 <form id="quiz-form" method="post" action="/quiz/{{quiz_session_id}}/results">
 {{#each questions}}
   <h3> {{question_text}} <img src="{{img_url}}"/> </h3>
-  {{#each answers}}<input name="eggo{{question_id}}" type="radio" class="{{correct}}"> {{answer_text}} </input><br>{{/each}}
+  {{#each answers}}<input name="{{question_id}}" type="radio" value="{{correct}}"> {{answer_text}} </input><br>{{/each}}
 {{/each}}
-<a href="/quiz/{{quiz_session_id}}/results"><input type="button" value="Roll For Inititative"></input></a>
+{{!-- <a href="/quiz/{{quiz_session_id}}/results"><input type="button" value="Roll For Inititative"></input></a> --}}
+<input type="submit" value="Roll For Inititative"></input>
 </form>
 </div>
