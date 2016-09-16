@@ -57,6 +57,8 @@ const getAllQuestionsByQuizSession = () => {
 
 const getScore = () => {
   console.log('this is the score?')
+  let score = 0
+  return score
     // for (let i = 0; i < answers.length; i++) {
     //     let currentQuestion = ;
     //     let questionAnswers = document.getElementsByName(currentQuestion);
