@@ -38,10 +38,6 @@ const Quiz = {
 // refactor so that one question and answer set is retrieved at a time
 // refactor so that quiz_session_questions is used and we can have multiple quizzes/adding questions)
 
-const getAnswersByQuestionID = (questionId) => {
-  return Quiz.getOneQuestAnswer(questionId)
-}
-
 
 const getAllQuestionsByQuizSession = () => {
   return Quiz.getAllQuestions().then( questions => {

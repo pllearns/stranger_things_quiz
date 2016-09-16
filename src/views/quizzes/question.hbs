@@ -1,11 +1,11 @@
 <p>YOUR STRANGER QUIZ</p>
 
 <div>
-<ul id="getAllQuestionsByQuizSession">
+<form id="quiz-form">
 {{#each questions}}
   <h3> {{question_text}} <img src="{{img_url}}"/> </h3>
-  <li>{{#each answers}} {{answer_text}} {{/each}}</li>
+  {{#each answers}}<input name="{{question_id}}" type="radio" class="{{correct}}"> {{answer_text}} </input><br>{{/each}} 
 {{/each}}
-
-</ul>
+<input type="submit" value="Roll For Inititative"></input>
+</form>
 </div>
