@@ -4,3 +4,14 @@
 <object data="/images/stranger_quiz_logo.svg" type="image/svg+xml">
 </object>
 
+<a href="/quiz/start"><button>START YOUR AWESOME QUIZZZZZZ</button></a>
+
+{{#if message}}
+  {message}
+{{/if}}
+
+<form action="/users/login" method="post">
+  <input type="text" name="email" />
+  <input type="password" name="password" />
+  <button type="submit">Log In</button>
+</form>
