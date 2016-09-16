@@ -7,13 +7,11 @@
 
 # Specifications
 
-- [ ] User can login.
-- [ ] User can create new trivia cards.
-- [ ] Each flash card has a "front" and "back" so user can test their knowledge.
+- [x] User can login.
+- [ ] User can take a Stranger Things Quiz.
 - [ ] User is scored with number of Eggos, and users can see this score at the end.
-- [ ] Code is transpiled.  
-- [ ] Use of postgreSQL. 
-- [ ] Must include TDD.
+- [x] Code is transpiled.  
+- [x] Use of postgreSQL. 
 - [ ] Publish to Heroku.
 
 
