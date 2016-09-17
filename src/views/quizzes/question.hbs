@@ -1,10 +1,15 @@
+<link rel="stylesheet" href="/stylesheets/main.css"/>
+
+<video playsinline preload="auto" autoplay poster="../public/images/bg.png" loop muted id="bgvid">
+  <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&amp;profile_id=174" type="video/mp4">
+</video>
 <p>YOUR STRANGER QUIZ</p>
 
-<div>
+<div font-family='benguiatBold'>
 <form id="quiz-form">
 {{#each questions}}
   <h3> {{question_text}} <img src="{{img_url}}"/> </h3>
-  {{#each answers}}<input name="{{question_id}}" type="radio" class="{{correct}}"> {{answer_text}} </input><br>{{/each}} 
+  {{#each answers}}<input name="{{question_id}}" type="radio" class="{{correct}}"> {{answer_text}} </input><br>{{/each}}
 {{/each}}
 <input type="submit" value="Roll For Inititative"></input>
 </form>

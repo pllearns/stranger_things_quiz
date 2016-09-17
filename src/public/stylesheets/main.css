@@ -1,4 +1,10 @@
-video#bgvid { 
+@font-face {
+  font-family: 'benguiatBold';
+  src: url('fonts/BenguiatBold.ttf')
+       format('truetype');
+}
+
+video#bgvid {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -12,5 +18,29 @@ video#bgvid {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     background: url(bg.png) no-repeat;
-    background-size: cover; 
+    background-size: cover;
+}
+
+form {
+  color: white;
+  display: table;
+  vertical-align: middle;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 12px 20px;
+  position: relative;
+  -ms-transform: translateX(10%) translateY(10%);
+  -moz-transform: translateX(20%) translateY(20%);
+}
+
+
+img {
+  width: 500px;
+  height: 300px;
+}
+
+p {
+  color: white;
 }
