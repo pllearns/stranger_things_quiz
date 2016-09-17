@@ -94,8 +94,20 @@ sessionAnswers["Oakland, CA"] = 0
 //looking to pull which thing was clicked from form
 //get data for what I"m looking for
 
+const correctCount = answers => {
+  let correctAnswers = 0
+  let totalAnswers = Object.keys(answers).length
+  for(let i = 0; i <= totalAnswers; i++){
+    if ( answers[i] === 'true'){
+      correctAnswers += 1
+    }
+  }
+  let percentCorrect = Math.floor((correctAnswers / totalAnswers) * 100)
+  return percentCorrect
+} 
 
-export { User, Quiz , getAllQuestionsByQuizSession}
+
+export { User, Quiz , getAllQuestionsByQuizSession, correctCount}
 
 
 //some ideas for counting score

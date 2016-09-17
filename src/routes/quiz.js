@@ -1,7 +1,12 @@
 import express from 'express'
 const router = express.Router()
 
-import { Quiz, getAllQuestionsByQuizSession, getCorrectAnswers } from '../database'
+import { 
+  Quiz, 
+  getAllQuestionsByQuizSession, 
+  getCorrectAnswers, 
+  correctCount 
+} from '../database'
 
 router.get( '/start', (request, response) => {
   let user_id = request.user[0].id
@@ -17,21 +22,19 @@ router.get( '/start', (request, response) => {
     .catch( error => response.send({ message: error.message }))
 })
 
-router.post( '/:id/results', (request, response) => {
+router.post( '/:id/results', (request, response, next) => {
   const { id } = request.params
-  console.log(request.body)
-  Quiz.getCorrectAnswers( id )
-    .then( results => {
-      // console.log('results', results)
-      response.redirect( 'quizzes/results', { results })
-    })
+  console.log(id)
+
+  correctCount( request.body )
+    .then( percentCorrect => response.redirect( `/quiz/${id}/results`, { percentCorrect }))
     .catch( error => response.send({ message: error.message }))
 })
 
 router.get( '/:id/results', (request, response) => {
   const { id } = request.params
   console.log(request.body)
-  Quiz.getCorrectAnswers( id )
+  getCorrectAnswers( id )
     .then( results => {
       // console.log('results', results)
       response.render( 'quizzes/results', { results })
