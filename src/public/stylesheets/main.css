@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'benguiatBold';
-  src: url('fonts/BenguiatBold.ttf')
+  src: url('/fonts/BenguiatBold.ttf')
        format('truetype');
 }
 
@@ -25,22 +25,27 @@ form {
   color: white;
   display: table;
   vertical-align: middle;
+  margin: 0;
   width: auto;
   height: auto;
   min-width: 100%;
   min-height: 100%;
   padding: 12px 20px;
-  position: relative;
-  -ms-transform: translateX(10%) translateY(10%);
-  -moz-transform: translateX(20%) translateY(20%);
+  position: absolute;;
 }
-
 
 img {
   width: 500px;
   height: 300px;
+  display: flex;
 }
 
 p {
   color: white;
+  font-family: 'benguiatBold';
+  margin-left: 20px;
+}
+
+div {
+  font-family: 'benguiatBold';
 }
