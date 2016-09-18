@@ -1,16 +1,53 @@
 video#bgvid { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(bg.png) no-repeat;
-    background-size: cover; 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(bg.png) no-repeat;
+  background-size: cover; 
 }
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Playfair Display', cursive;
+}
+
+p {
+  font-family: 'Playfair Display', cursive;
+}
+
+#log-in{
+  margin: 40px 30px;
+  font-family: 'Playfair Display', cursive;
+}
+
+.log-in-field{
+  padding: 10px;
+  margin: 10px;
+}
+
+.quiz-start{
+  background-color: #3E0B3D;
+  border: 0;
+  color: #C70039;
+  margin: 10px auto;
+  padding: 20px 30px;
+}
+
+.quiz-start:hover {
+  background: #581845;
+  color: #FF0000;
+  text-decoration: none;  
+}
+
