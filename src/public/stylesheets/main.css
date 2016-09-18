@@ -1,3 +1,35 @@
+
+@font-face {
+  font-family: 'benguiatBold';
+  src: url('/fonts/BenguiatBold.ttf')
+       format('truetype');
+}
+
+form {
+  color: white;
+  display: table;
+  vertical-align: middle;
+  margin: 0;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 12px 20px;
+  position: absolute;;
+}
+
+img {
+  width: 500px;
+  height: 300px;
+  display: flex;
+}
+
+p {
+  color: white;
+  font-family: 'benguiatBold';
+  margin-left: 20px;
+}
+
 video#bgvid { 
   position: fixed;
   top: 50%;
