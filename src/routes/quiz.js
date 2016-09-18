@@ -1,7 +1,12 @@
 import express from 'express'
 const router = express.Router()
 
-import { Quiz, getAllQuestionsByQuizSession } from '../database'
+import { 
+  Quiz, 
+  getAllQuestionsByQuizSession, 
+  getCorrectAnswers, 
+  correctCount 
+} from '../database'
 
 router.get( '/start', (request, response) => {
   let user_id = request.user[0].id
@@ -17,11 +22,23 @@ router.get( '/start', (request, response) => {
     .catch( error => response.send({ message: error.message }))
 })
 
+router.post( '/:id/results', (request, response, next) => {
+  const { id } = request.params
+  console.log(id)
+
+  correctCount( request.body )
+    .then( percentCorrect => response.redirect( `/quiz/${id}/results`, { percentCorrect }))
+    .catch( error => response.send({ message: error.message }))
+})
+
 router.get( '/:id/results', (request, response) => {
   const { id } = request.params
-
-  Quiz.calculateResults( id )
-    .then( results => response.render( 'quiz/results', { results }))
+  console.log(request.body)
+  getCorrectAnswers( id )
+    .then( results => {
+      // console.log('results', results)
+      response.render( 'quizzes/results', { results })
+    })
     .catch( error => response.send({ message: error.message }))
 })
 
@@ -35,7 +52,7 @@ router.get( '/:id/:questionNumber', (request, response) => {
   // TODO: Get count of questions, and redirect to /quiz/results if at end
 
   getAllQuestionsByQuizSession()
-    .then( questions => response.render( 'quizzes/question', { questions }))
+    .then( questions => response.render( 'quizzes/question', { questions, quiz_session_id: id }))
     .catch( error => response.send({ message: error.message }))
 })
 
