@@ -8,6 +8,7 @@ import gravatar from 'gravatar'
 import session from 'express-session'
 import logger from 'morgan'
 import pgp from 'pg-promise'
+import morgan from 'morgan'
 
 import database from './database'
 import passport from './auth/passport'
