@@ -1,31 +1,18 @@
 <video playsinline preload="auto" autoplay poster="../public/images/bg.png" loop muted id="bgvid">
   <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&amp;profile_id=174" type="video/mp4">
 </video>
-<div class="main-box">
-  <div class="col-lg-12 col-md-12 col-md-12 col-xs-12">
-    <div class=" col-centered col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-xs-12">
-      <object data="/images/stranger_quiz_logo.svg" type="image/svg+xml"></object>
-    </div>
-  </div
-</div>
+<object data="/images/stranger_quiz_logo.svg" type="image/svg+xml">
+</object>
 
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <h1>
-      <a href="/quiz/start" class="quiz-start">How STRANGE are you?</a>
-    </h1>
-  </div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    {{#if message}}
-      {message}
-    {{/if}}
+<a href="yourmusicfile.mp3">This Quiz is Not an Official Netflix Production</a>
+<a href="/quiz/start"><button>START YOUR AWESOME QUIZZZZZZ</button></a>
 
-    <form id="log-in" action="/users/login" method="post">
-      <div class="form-group">
-        <input type="text" size="35" class="log-in-field" name="email" placeholder="Enter Email" /><br />
-        <input type="password" size="35" name="password" class="log-in-field" placeholder="Enter Password" />
-      </div>
-      <button type="submit" class="btn btn-primary log-in-field">Log In</button>
-    </form>
-  </div>
-</div>
+{{#if message}}
+  {message}
+{{/if}}
+
+<form action="/users/login" method="post">
+  <input type="text" name="email" />
+  <input type="password" name="password" />
+  <button type="submit">Log In</button>
+</form>
