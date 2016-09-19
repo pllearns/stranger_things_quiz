@@ -8,10 +8,6 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _serveFavicon = require('serve-favicon');
-
-var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
-
 var _cookieParser = require('cookie-parser');
 
 var _cookieParser2 = _interopRequireDefault(_cookieParser);
@@ -72,8 +68,6 @@ app.set('view engine', 'hbs');
 app.set('trust proxy', 1);
 
 app.set('port', process.env.PORT || 3000);
-
-app.use((0, _serveFavicon2.default)(_path2.default.join__dirname, 'public', 'favicon.ico'));
 app.use((0, _morgan2.default)('dev'));
 app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({ extended: true }));

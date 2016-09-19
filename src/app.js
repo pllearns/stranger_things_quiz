@@ -1,6 +1,5 @@
 import express from 'express'
 import path from 'path'
-import favicon from 'serve-favicon'
 import cookieParser from 'cookie-parser'
 import cookieSession from 'cookie-session'
 import bodyParser from 'body-parser'
@@ -27,8 +26,6 @@ app.set('view engine', 'hbs');
 app.set('trust proxy', 1)
 
 app.set('port', (process.env.PORT || 3000))
-
-app.use(favicon(path.join__dirname, 'public', 'favicon.ico'))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
