@@ -18,9 +18,6 @@ import quiz from './routes/quiz'
 const app = express()
 
 app.get('env') === process.env.NODE_ENV || 'development'
-app.get('/db', => (request, response) {
-  pgp.connect(process.env.DATABASE_URL)
-})
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
