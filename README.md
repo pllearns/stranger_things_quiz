@@ -1,8 +1,7 @@
 # stranger_things_quiz
 
-# Do You Have Stranger Things In Your Brain?
+### Do You Have Stranger Things In Your Brain?
 
-# Context
 
 
 # Specifications
