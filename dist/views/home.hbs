@@ -1,0 +1,18 @@
+<video playsinline preload="auto" autoplay poster="../public/images/bg.png" loop muted id="bgvid">
+  <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&amp;profile_id=174" type="video/mp4">
+</video>
+<object data="/images/stranger_quiz_logo.svg" type="image/svg+xml">
+</object>
+
+<a href="yourmusicfile.mp3">This Quiz is Not an Official Netflix Production</a>
+<a href="/quiz/start"><button>START YOUR AWESOME QUIZZZZZZ</button></a>
+
+{{#if message}}
+  {message}
+{{/if}}
+
+<form action="/users/login" method="post">
+  <input type="text" name="email" />
+  <input type="password" name="password" />
+  <button type="submit">Log In</button>
+</form>

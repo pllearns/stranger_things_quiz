@@ -55,7 +55,6 @@
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pg": "^6.1.0",
     "pg-promise": "^5.3.2",
     "serve-favicon": "^2.3.0"
   }

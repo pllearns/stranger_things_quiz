@@ -6,8 +6,8 @@ import cookieSession from 'cookie-session'
 import bodyParser from 'body-parser'
 import gravatar from 'gravatar'
 import session from 'express-session'
-import morgan from 'morgan'
-import pg from 'pg'
+import logger from 'morgan'
+import pgp from 'pg-promise'
 
 import database from './database'
 import passport from './auth/passport'
@@ -19,7 +19,7 @@ const app = express()
 
 app.get('env') === process.env.NODE_ENV || 'development'
 app.get('/db', => (request, response) {
-  pg.connect(process.env.DATABASE_URL)
+  pgp.connect(process.env.DATABASE_URL)
 })
 
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +30,7 @@ app.set('trust proxy', 1)
 
 app.set('port', (process.env.PORT || 3000))
 
+app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(express.json())
