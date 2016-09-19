@@ -11,7 +11,7 @@
               <ul>
               {{#each answers}}
                 <li>
-                  <input name="{{question_id}}" id="{{question_id}}{{id}}" type="radio" value="{{correct}}" class="radio-space"></input>
+                  <input name="{{question_id}}" id="{{question_id}}{{id}}" type="radio" value="{{correct}}"></input>
                   <label for="{{question_id}}{{id}}">{{answer_text}}</label>
                   <div class="check"></div>
                 </li>
@@ -23,7 +23,7 @@
             </div>
           </div>
         {{/each}}
-        <input type="submit" class="btn" value="Roll For Inititative"></input>
+        <input type="submit" class="btn btn-primary btn-lg btn-block pull-right check-quiz" value="Roll For Inititative & See Your Score"></input>
       </form>
     </div>
   </div>

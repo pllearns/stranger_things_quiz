@@ -7,17 +7,17 @@
 
 # Specifications
 
-- [x] User can login.
-- [ ] User can take a Stranger Things Quiz.
-- [ ] User is scored with number of Eggos, and users can see this score at the end.
-- [x] Code is transpiled.  
-- [x] Use of postgreSQL. 
+- [X] User can login. (**100% complete**)
+- [X] User can take a Stranger Things Quiz. (**100% complete**)
+- [ ] User is scored with number of Eggos, and users can see this score at the end. (**80% complete** Logic is there, didn't have time to get it to render to a page)
+- [X] Code is transpiled. (**100% complete**)
+- [X] Use of postgreSQL. (**100% complete**)
 - [ ] Publish to Heroku.
 
 
 # Required
 
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 # Quality Rubric
 
