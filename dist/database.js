@@ -13,9 +13,20 @@ var _pgPromise2 = _interopRequireDefault(_pgPromise);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var db = (0, _pgPromise2.default)()({
+var connectionSetting = {
   database: 'stranger_quiz'
-});
+};
+
+if (process.env.NODE_ENV !== 'development') {
+  connectionSetting = {
+    host: 'ec2-54-235-108-156.compute-1.amazonaws.com',
+    database: 'dah0mroilv01s5',
+    user: 'aclrzvavsyseua',
+    password: '-AUucgCDeU1WC4MDKbNNLs6pET'
+  };
+}
+
+var db = (0, _pgPromise2.default)()(connectionSetting);
 
 var findUserById = 'SELECT * FROM users WHERE id=$1';
 var findUserByEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
