@@ -27,6 +27,7 @@ app.set('trust proxy', 1)
 
 app.set('port', (process.env.PORT || 3000))
 
+app.use(favicon(path.join__dirname, 'public', 'favicon.ico'))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
