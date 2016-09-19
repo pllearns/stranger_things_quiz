@@ -24,14 +24,13 @@ router.get( '/start', (request, response) => {
 
 router.post( '/:id/results', (request, response, next) => {
   const { id } = request.params
-  console.log(id)
 
   correctCount( request.body )
-    .then( percentCorrect => response.redirect( `/quiz/${id}/results`, { percentCorrect }))
+    .then( percentCorrect => response.redirect( `/quiz/${id}/results2`, { percentCorrect }))
     .catch( error => response.send({ message: error.message }))
 })
 
-router.get( '/:id/results', (request, response) => {
+router.get( '/:id/results2', (request, response) => {
   const { id } = request.params
   console.log(request.body)
   getCorrectAnswers( id )

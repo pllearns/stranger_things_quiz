@@ -57,42 +57,6 @@ const getAllQuestionsByQuizSession = () => {
   })
 }
 
-// const getScore = () => {
-//   console.log('this is the score?')
-//   let score = 0
-//   return score
-// }
-
-let sessionAnswers = new Array()
-// make this auto? add it in a function with looping and getting data from the database
-sessionAnswers["Eggos"] = 1
-sessionAnswers["Pancakes"] = 0
-sessionAnswers["The Upside Down"] = 1
-sessionAnswers["The Entryway"] = 0
-sessionAnswers["Hawkins, IN"] = 1
-sessionAnswers["Oakland, CA"] = 0
-
-// const getRightAnswer = () => {
-//   console.log('===================wat')
-//   let isItRight = 0
-//   let theForm = document.forms["quiz-form"]
-//   let selectedAnswer = theForm.elements["eggo1"] // does this need to change? do we need to do more to call this here???
-//   for(var i = 0; i < selectedAnswer.length; i++){
-//     if(selectedAnswer[i].checked){
-//       isItRight = sessionAnswers[selectedAnswer[i].value]
-//       break
-//     }
-//   }
-//   return isItRight
-// }
-
-// const getTotal = () => {
-//   let totalScore += getRightAnswer()
-//   console.log(totalScore)
-// }
-
-//looking to pull which thing was clicked from form
-//get data for what I"m looking for
 
 const correctCount = answers => {
   let correctAnswers = 0
@@ -103,32 +67,10 @@ const correctCount = answers => {
     }
   }
   let percentCorrect = Math.floor((correctAnswers / totalAnswers) * 100)
+  console.log('YOUR % CORRECT =====>', percentCorrect)
   return percentCorrect
 } 
 
 
 export { User, Quiz , getAllQuestionsByQuizSession, correctCount}
 
-
-//some ideas for counting score
-    // for (let i = 0; i < answers.length; i++) {
-    //     let currentQuestion = ;
-    //     let questionAnswers = document.getElementsByName(currentQuestion);
-    //     for (let j = 0; j < questionResponses.length; j++) {
-    //         if (questionResponses[i].checked) {
-    //             userInput[i] = question0s[i].value;
-    //         }
-    //     }
-    // }
-    // let score = 0
-    // // after this completes, you'll have the user input values
-    // // the rest of your code should now work
-    // for (let i=0;i<numQuestions;i++){
-    //     if (userInput[i]==answers[i]){
-    //         score += 1;
-    //     } else {
-    //         score += 0;
-    //     }
-    // }
-    //
-    // return score;

@@ -1,17 +1,32 @@
-<link rel="stylesheet" href="/stylesheets/main.css"/>
-
 <video playsinline preload="auto" autoplay poster="../public/images/bg.png" loop muted id="bgvid">
   <source src="https://player.vimeo.com/external/178812339.hd.mp4?s=bf1db383854643d8d92aac96a5bca01802122d46&amp;profile_id=174" type="video/mp4">
 </video>
-<p>YOUR STRANGER QUIZ</p>
-
+<div class="quiz-background">
+  <div class="container quiz-font">
+    <h1>How STRANGE are you?</h1>
+    <div>
+      <form id="quiz-form" method="post" action="/quiz/{{quiz_session_id}}/results">
+        {{#each questions}}
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="quiz-q-and-ans col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h3>{{question_text}}</h3>
+              <ul>
+              {{#each answers}}
+                <li>
+                  <input name="{{question_id}}" id="{{question_id}}{{id}}" type="radio" value="{{correct}}"></input>
+                  <label for="{{question_id}}{{id}}">{{answer_text}}</label>
+                  <div class="check"></div>
+                </li>
+              {{/each}}
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <img class="img-responsive img-fluid quiz-img" src="{{img_url}}"/> 
+            </div>
+          </div>
+        {{/each}}
+        <input type="submit" class="btn btn-primary btn-lg btn-block pull-right check-quiz" value="Roll For Inititative & See Your Score"></input>
+      </form>
+    </div>
+  </div>
 <div>
-<form id="quiz-form" method="post" action="/quiz/{{quiz_session_id}}/results">
-{{#each questions}}
-  <h3> {{question_text}} <img src="{{img_url}}"/> </h3>
-  {{#each answers}}<input name="{{question_id}}" type="radio" value="{{correct}}"> {{answer_text}} </input><br>{{/each}}
-{{/each}}
-{{!-- <a href="/quiz/{{quiz_session_id}}/results"><input type="button" value="Roll For Inititative"></input></a> --}}
-<input type="submit" value="Roll For Inititative"></input>
-</form>
-</div>
