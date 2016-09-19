@@ -9,7 +9,7 @@
     "build:frontend": "webpack --watch",
     "start:dev": "nodemon dist/app.js",
     "start": "node dist/app.js",
-    "db": "dropdb stranger_quiz; createdb stranger_quiz; psql stranger_quiz < schema.sql; psql stranger_quiz < fixture-data.sql"
+    "db": "dropdb stranger_quiz; createdb stranger_quiz; heroku pg:psql stranger_quiz < schema.sql; psql stranger_quiz < fixture-data.sql"
   },
   "repository": {
     "type": "git",
