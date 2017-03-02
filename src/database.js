@@ -1,8 +1,20 @@
 import pgp from 'pg-promise'
-
-const db = pgp()({
+let connectionSetting = {
   database: 'stranger_quiz'
-})
+}
+
+if (process.env.NODE_ENV !== 'development') {
+  connectionSetting = {
+    host: 'ec2-54-235-108-156.compute-1.amazonaws.com',
+    database:'dah0mroilv01s5',
+    user: 'aclrzvavsyseua',
+    password: '-AUucgCDeU1WC4MDKbNNLs6pET'
+  }
+}
+
+const db = pgp()(
+  connectionSetting
+)
 
 const findUserById = 'SELECT * FROM users WHERE id=$1'
 const findUserByEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1'
@@ -69,8 +81,7 @@ const correctCount = answers => {
   let percentCorrect = Math.floor((correctAnswers / totalAnswers) * 100)
   console.log('YOUR % CORRECT =====>', percentCorrect)
   return percentCorrect
-} 
+}
 
 
 export { User, Quiz , getAllQuestionsByQuizSession, correctCount}
-
