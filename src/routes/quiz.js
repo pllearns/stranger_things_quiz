@@ -1,11 +1,11 @@
 import express from 'express'
 const router = express.Router()
 
-import { 
-  Quiz, 
-  getAllQuestionsByQuizSession, 
-  getCorrectAnswers, 
-  correctCount 
+import {
+  Quiz,
+  getAllQuestionsByQuizSession,
+  getCorrectAnswers,
+  correctCount
 } from '../database'
 
 router.get( '/start', (request, response) => {
@@ -24,10 +24,10 @@ router.get( '/start', (request, response) => {
 
 router.post( '/:id/results', (request, response, next) => {
   const { id } = request.params
-
-  correctCount( request.body )
-    .then( percentCorrect => response.redirect( `/quiz/${id}/results2`, { percentCorrect }))
-    .catch( error => response.send({ message: error.message }))
+  console.log('a good body:', request.body)
+  let percentCorrect = correctCount( request.body )
+  response.render( 'quizzes/results', { percentCorrect })
+    // .catch( error => response.send({ message: error.message }))
 })
 
 router.get( '/:id/results2', (request, response) => {
