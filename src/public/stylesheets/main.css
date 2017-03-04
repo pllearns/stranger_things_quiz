@@ -6,7 +6,7 @@
 }
 
 form {
-  color: white;
+  color: black;
   display: table;
   vertical-align: middle;
   margin: 0;
@@ -30,7 +30,7 @@ p {
   margin-left: 20px;
 }
 
-video#bgvid { 
+video#bgvid {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -44,7 +44,7 @@ video#bgvid {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   background: url(bg.png) no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
 
 a {
@@ -62,6 +62,7 @@ p {
 #log-in{
   margin: 40px 30px;
   font-family: 'Playfair Display', cursive;
+  color: black;
 }
 
 .clearfix {
@@ -92,11 +93,11 @@ p {
 .quiz-start:hover {
   background: #581845;
   color: #FF0000;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 .quiz-background {
-  background-image:url(http://www.instituteofman.com/wp/wp-content/uploads/2016/08/stranger_things_bikes.jpg); 
+  background-image:url(http://www.instituteofman.com/wp/wp-content/uploads/2016/08/stranger_things_bikes.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
