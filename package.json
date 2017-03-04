@@ -46,7 +46,6 @@
     "express-session": "^1.14.1",
     "favicon": "0.0.2",
     "gravatar": "^1.5.2",
-    "handlebars": "^4.0.5",
     "hbs": "~4.0.0",
     "morgan": "^1.7.0",
     "nodemon": "^1.10.2",
