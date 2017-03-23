@@ -23,10 +23,10 @@ router.get('/signup', function (request, response, next) {
 });
 
 router.post('/signup', function (request, response, next) {
-  var _request$body = request.body;
-  var name = _request$body.name;
-  var email = _request$body.email;
-  var password = _request$body.password;
+  var _request$body = request.body,
+      name = _request$body.name,
+      email = _request$body.email,
+      password = _request$body.password;
 
 
   (0, _passport.hashPassword)(password).then(function (hash) {

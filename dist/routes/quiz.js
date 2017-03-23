@@ -27,12 +27,10 @@ router.get('/start', function (request, response) {
 router.post('/:id/results', function (request, response, next) {
   var id = request.params.id;
 
-
-  (0, _database.correctCount)(request.body).then(function (percentCorrect) {
-    return response.redirect('/quiz/' + id + '/results2', { percentCorrect: percentCorrect });
-  }).catch(function (error) {
-    return response.send({ message: error.message });
-  });
+  console.log('a good body:', request.body);
+  var percentCorrect = (0, _database.correctCount)(request.body);
+  response.render('quizzes/results', { percentCorrect: percentCorrect });
+  // .catch( error => response.send({ message: error.message }))
 });
 
 router.get('/:id/results2', function (request, response) {
@@ -48,9 +46,9 @@ router.get('/:id/results2', function (request, response) {
 });
 
 router.get('/:id/:questionNumber', function (request, response) {
-  var _request$params = request.params;
-  var id = _request$params.id;
-  var questionNumber = _request$params.questionNumber;
+  var _request$params = request.params,
+      id = _request$params.id,
+      questionNumber = _request$params.questionNumber;
 
   // TODO: Update quiz_session_questions, setting correct and completed
   // Determine value for correct

@@ -101,10 +101,8 @@ var getAllQuestionsByQuizSession = function getAllQuestionsByQuizSession() {
       return question.id;
     });
     return Promise.all([Quiz.getAllAnswers(questionIds)]).then(function (data) {
-      var _data = _slicedToArray(data, 1);
-
-      var answers = _data[0];
-
+      var _data = _slicedToArray(data, 1),
+          answers = _data[0];
 
       questions.forEach(function (question) {
         question.answers = answers.filter(function (answer) {
