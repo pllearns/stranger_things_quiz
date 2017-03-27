@@ -123,7 +123,6 @@ var correctCount = function correctCount(answers) {
     }
   }
   var percentCorrect = Math.floor(correctAnswers / totalAnswers * 100);
-  console.log('YOUR % CORRECT =====>', percentCorrect);
   return percentCorrect;
 };
 

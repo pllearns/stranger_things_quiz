@@ -26,16 +26,19 @@ router.post( '/:id/results', (request, response, next) => {
   const { id } = request.params
   console.log('a good body:', request.body)
   let percentCorrect = correctCount( request.body )
-  response.render( 'quizzes/results', { percentCorrect })
-    // .catch( error => response.send({ message: error.message }))
+    if (percentCorrect > 70) {
+      response.render('quizzes/bad_results', { percentCorrect })
+    } else {
+      response.render( 'quizzes/results', { percentCorrect })
+    }
 })
+
 
 router.get( '/:id/results2', (request, response) => {
   const { id } = request.params
   console.log(request.body)
   getCorrectAnswers( id )
     .then( results => {
-      // console.log('results', results)
       response.render( 'quizzes/results', { results })
     })
     .catch( error => response.send({ message: error.message }))
@@ -43,12 +46,6 @@ router.get( '/:id/results2', (request, response) => {
 
 router.get( '/:id/:questionNumber', (request, response) => {
   const { id, questionNumber } = request.params
-
-  // TODO: Update quiz_session_questions, setting correct and completed
-  // Determine value for correct
-  // Update question
-
-  // TODO: Get count of questions, and redirect to /quiz/results if at end
 
   getAllQuestionsByQuizSession()
     .then( questions => response.render( 'quizzes/question', { questions, quiz_session_id: id }))
