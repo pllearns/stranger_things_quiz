@@ -6,7 +6,7 @@
 }
 
 form {
-  color: white;
+  color: black;
   display: table;
   vertical-align: middle;
   margin: 0;
@@ -30,7 +30,7 @@ p {
   margin-left: 20px;
 }
 
-video#bgvid { 
+video#bgvid {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -44,15 +44,80 @@ video#bgvid {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   background: url(bg.png) no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
 
 a {
   text-decoration: none;
 }
 
-h1 {
-  font-family: 'Playfair Display', cursive;
+.mainLogo {
+  height: 60%;
+  width: 60%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resultsText {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+  text-align: center;
+  margin-top: 300px;
+  opacity: 0.5;
+  font-size: 45px;
+}
+
+.score {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+  text-align: center;
+  font-size: 100px;
+}
+
+.startButton {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+
+}
+
+.logIn {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  text-align: center;
+}
+
+.question-text-header {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+  opacity: 0.3;
+  text-align: center;
+}
+
+.question-text {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+}
+
+.disclaimer {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  text-align: center;
+}
+
+.startUp {
+  align-items: center;
 }
 
 p {
@@ -62,6 +127,7 @@ p {
 #log-in{
   margin: 40px 30px;
   font-family: 'Playfair Display', cursive;
+  color: black;
 }
 
 .clearfix {
@@ -92,11 +158,11 @@ p {
 .quiz-start:hover {
   background: #581845;
   color: #FF0000;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 .quiz-background {
-  background-image:url(http://www.instituteofman.com/wp/wp-content/uploads/2016/08/stranger_things_bikes.jpg); 
+  background-image:url(http://www.instituteofman.com/wp/wp-content/uploads/2016/08/stranger_things_bikes.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }

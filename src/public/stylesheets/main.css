@@ -51,8 +51,73 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  font-family: 'Playfair Display', cursive;
+.mainLogo {
+  height: 60%;
+  width: 60%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resultsText {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+  text-align: center;
+  margin-top: 300px;
+  opacity: 0.5;
+  font-size: 45px;
+}
+
+.score {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+  text-align: center;
+  font-size: 100px;
+}
+
+.startButton {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+
+}
+
+.logIn {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  text-align: center;
+}
+
+.question-text-header {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+  opacity: 0.3;
+  text-align: center;
+}
+
+.question-text {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  color: white;
+}
+
+.disclaimer {
+  font-family: BenguiatBold;
+  src: url(BenguiatBold.ttf);
+  text-align: center;
+}
+
+.startUp {
+  align-items: center;
 }
 
 p {
